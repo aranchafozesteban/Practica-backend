@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 require('./lib/connectMongoose');
+require('./routes/apiv1/anuncios.js');
 
 var app = express();
 
@@ -17,6 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Rutas de mi API:
+app.use('api/init-db', require('./routes/apiv1/anuncios'));
 
 // Rutas de mi web:
 app.use('/', require('./routes/index'));
