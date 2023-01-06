@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Rutas de mi API:
-app.use('api/init-db', require('./routes/apiv1/anuncios'));
+app.use('apiv1/anuncios', require('./routes/apiv1/anuncios'));
 
 // Rutas de mi web:
 app.use('/', require('./routes/index'));
