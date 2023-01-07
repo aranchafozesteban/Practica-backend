@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Rutas de mi API:
-app.use('apiv1/anuncios', require('./routes/apiv1/anuncios'));
+app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 
 // Rutas de mi web:
 app.use('/', require('./routes/index'));
@@ -30,6 +30,7 @@ app.use('/users', require('./routes/users'));
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -41,5 +42,15 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+// responder con formato JSON a una petición al API
+app.use(function(err, req, res, next) {
+  if (req.originalUrl.startsWith('/api/')) {
+    res.json({ error: err.message });
+    return;
+  }
+});
+
 
 module.exports = app;
