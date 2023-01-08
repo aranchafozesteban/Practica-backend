@@ -15,6 +15,7 @@ router.get('/', async (req, res, next)=>{
         const nombre2 = req.query.nombre;
         const venta = req.query.venta;
         const precio = req.query.precio;
+        const foto = req.query.foto;
         const filtro = {};
 
         //paginación 
@@ -39,6 +40,10 @@ router.get('/', async (req, res, next)=>{
             filtro.precio = precio;
         }
         
+         // filtro por foto -->/apiv1/anuncios?foto=X.png
+         if (foto) {
+            filtro.foto = foto;
+        }
 
         //filtro por tag -->
 

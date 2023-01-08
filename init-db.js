@@ -30,7 +30,7 @@ async function initAnuncios(){
             "nombre": "Bicicleta",
             "venta": true,
             "precio": 230.15,
-            "foto": "bici.jpg",
+            "foto": "bicicleta.png",
             "tags": [ "lifestyle", "motor"]
             },
             {
