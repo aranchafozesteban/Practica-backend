@@ -29,7 +29,7 @@ GET /apiv1/anuncios
 {"anuncios":[{"_id":"63ba5510d9264b0bb528fd24","nombre":"Bicicleta","venta":true,"precio":230.15,"foto":"bici.jpg","tags":["lifestyle","motor"],"__v":0},{"_id":"63ba5510d9264b0bb528fd25","nombre":"iPhone 3GS","venta":false,"precio":50,"foto":"iphone.png","tags":["lifestyle","mobile"],"__v":0},{"_id":"63ba5510d9264b0bb528fd26","nombre":"Pulsera","venta":false,"precio":35,"foto":"pulsera.png","tags":["lifestyle"],"__v":0},{"_id":"63ba5510d9264b0bb528fd27","nombre":"Mini","venta":true,"precio":29300,"foto":"mini.png","tags":["motor"],"__v":0},{"_id":"63ba5510d9264b0bb528fd28","nombre":"Toyota","venta":false,"precio":25413,"foto":"toyota.png","tags":["motor"],"__v":0}]}
 
 ------------------------
-Lista de anuncios cuyo nombre empieza por:
+List of adds that its name starts with:
 ```sh
 GET /apiv1/anuncios?nombre=Bi
 ```
@@ -44,7 +44,7 @@ GET /apiv1/anuncios?nombre=Bi
             }
 
 ---
-Lista de anuncios cuyo precio es:
+Lista of adds that its price is:
 ```sh
 GET /apiv1/anuncios?precio=230.15
 ```
@@ -60,7 +60,7 @@ GET /apiv1/anuncios?precio=230.15
             }
 
 ------
-Lista de anuncios que están en venta:
+List of products that are on sale:
 ```sh
 GET /apiv1/anuncios?venta=true
 ```
@@ -76,14 +76,20 @@ GET /apiv1/anuncios?venta=true
             {"_id":"63ba5510d9264b0bb528fd27","nombre":"Mini","venta":true,"precio":29300,"foto":"mini.png","tags":["motor"],"__v":0}]}
 
 ---
-Lista de anuncios que que tienen esa foto:
+List of adds that have that photo:
 ```sh
 GET /apiv1/anuncios?foto=iphone.png
 ```
 {"anuncios":[{"_id":"63ba5510d9264b0bb528fd25","nombre":"iPhone 3GS","venta":false,"precio":50,"foto":"iphone.png","tags":["lifestyle","mobile"],"__v":0}]}
 
 ---
+List of adds that have those tags:
+```sh
+GET /apiv1/anuncios?tags=motor
+```
+{"anuncios":[{"_id":"63ba5510d9264b0bb528fd24","nombre":"Bicicleta","venta":true,"precio":230.15,"foto":"bici.jpg","tags":["lifestyle","motor"],"__v":0},{"_id":"63ba5510d9264b0bb528fd27","nombre":"Mini","venta":true,"precio":29300,"foto":"mini.png","tags":["motor"],"__v":0},{"_id":"63ba5510d9264b0bb528fd28","nombre":"Toyota","venta":false,"precio":25413,"foto":"toyota.png","tags":["motor"],"__v":0}]}
 
+---
 
 
 List with pagination and limited number of ads:
@@ -102,6 +108,14 @@ GET /apiv1/anuncios?skip=1&limit=3
             "tags":["lifestyle","mobile"],"__v":0
             },
             {"_id":"63ba5510d9264b0bb528fd26","nombre":"Pulsera","venta":false,"precio":35,"foto":"pulsera.png","tags":["lifestyle"],"__v":0},{"_id":"63ba5510d9264b0bb528fd27","nombre":"Mini","venta":true,"precio":29300,"foto":"mini.png","tags":["motor"],"__v":0}]}
+
+---
+List with tags:
+```sh
+GET /apiv1/anuncios?fields=tags
+```
+{"anuncios":[{"_id":"63ba5510d9264b0bb528fd24","tags":["lifestyle","motor"]},{"_id":"63ba5510d9264b0bb528fd25","tags":["lifestyle","mobile"]},{"_id":"63ba5510d9264b0bb528fd26","tags":["lifestyle"]},{"_id":"63ba5510d9264b0bb528fd27","tags":["motor"]},{"_id":"63ba5510d9264b0bb528fd28","tags":["motor"]}]}
+
 
 ---
 Crear un anuncio:

@@ -15,7 +15,7 @@ router.get('/', async (req, res, next)=>{
         const venta = req.query.venta;
         const precio = req.query.precio;
         const foto = req.query.foto;
-        const tag =req.query.tag;
+        const tags = req.query.tags;
         const filtro = {};
 
         //paginación 
@@ -46,16 +46,38 @@ router.get('/', async (req, res, next)=>{
         }
 
         //filtro por tag --> /apiv1/anuncios?tag=motor
-        if (tag){
-            filtro.tag = tag;
+        if (tags){
+            filtro.tags = tags;
         }
 
-        const anuncios = await Anuncio.lista(filtro,skip, limit);
+        const anuncios = await Anuncio.lista(filtro,skip, limit,fields);
         res.json({anuncios: anuncios });
     }catch(err){
         next(err);
     }
 });
+
+// GET /apiv1/anuncios --> lista con anuncios 
+router.get('/tags', async (req, res, next)=>{
+    try{
+        //filtros
+        const tags = req.query.tags;
+        listaTags ={}
+
+        // filtro por nombre --> /apiv1/anuncios?nombre=Bicicleta
+        if (tags){
+            filtro.tags = tags
+        }
+
+
+        const anuncios = await Anuncio.lista(tags);
+        res.json({anuncios: listaTags });
+    }catch(err){
+        next(err);
+    }
+});
+
+
 
 // Crear anuncio
 router.post('/', async (req, res, next) => {
