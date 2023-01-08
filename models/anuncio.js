@@ -10,10 +10,11 @@ var anuncioSchema = mongoose.Schema({
     tags: [String]
 });
 
-anuncioSchema.statics.lista = function(filtro, skip, limit){
+anuncioSchema.statics.lista = function(filtro, skip, limit, fields){
     const query =Anuncio.find(filtro);
     query.skip(skip);
     query.limit(limit);
+    query.select(fields);
     return query.exec()
 }
 

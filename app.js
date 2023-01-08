@@ -41,16 +41,15 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
 
-
-// responder con formato JSON a una petición al API
-app.use(function(err, req, res, next) {
-  if (req.originalUrl.startsWith('/api/')) {
+  if (req.originalUrl.startsWith('/apiv1/')) {
     res.json({ error: err.message });
     return;
   }
 });
+
+
+
 
 
 module.exports = app;

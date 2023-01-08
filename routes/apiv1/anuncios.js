@@ -21,7 +21,7 @@ router.get('/', async (req, res, next)=>{
 router.get('/', async (req, res, next)=>{
     try{
         //filtros
-        const nombre =req.query.nombre;
+        const nombre = req.query.nombre;
         const venta = req.query.venta;
         const precio = req.query.precio;
         const filtro = {};
@@ -29,6 +29,9 @@ router.get('/', async (req, res, next)=>{
         //paginación 
         const skip = req.query.skip;
         const limit = req.query.limit;
+
+        //selección de campos
+        const fields = req.query.fields;
 
         // filtro por nombre --> /apiv1/anuncios?nombre=Bicicleta
         if (nombre){
