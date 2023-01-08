@@ -7,27 +7,12 @@ var createError = require('http-errors');
 const Anuncio = require('../../models/anuncio');
 
 
-// GET /apiv1/anuncios --> lista con anuncios sin filtros
-router.get('/', async (req, res, next)=>{
-    try{
-        const anuncios = await Anuncio.lista();
-        res.json({anuncios: anuncios });
-    }catch(err){
-        next(err);
-    }
-});
-
-router.get('/parametro_opcional/:color?', (req, res, next) => {
-    const color = req.params.color;
-    res.send(`He recibido el parámetro ${color}`);
-  });
-
-
-// GET /apiv1/anuncios --> lista con anuncios con filtros
+// GET /apiv1/anuncios --> lista con anuncios 
 router.get('/', async (req, res, next)=>{
     try{
         //filtros
         const nombre = req.query.nombre;
+        const nombre2 = req.query.nombre;
         const venta = req.query.venta;
         const precio = req.query.precio;
         const filtro = {};
@@ -41,7 +26,7 @@ router.get('/', async (req, res, next)=>{
 
         // filtro por nombre --> /apiv1/anuncios?nombre=Bicicleta
         if (nombre){
-            filtro.nombre = nombre;
+            filtro.nombre = new RegExp('^' + req.query.nombre, "i");
         }
 
         // filtro por venta o compra --> /apiv1/anuncios?venta=true
@@ -49,7 +34,7 @@ router.get('/', async (req, res, next)=>{
             filtro.venta = venta;
         }
 
-        // filtro por precio -->
+        // filtro por precio -->/apiv1/anuncios?venta=XX.XX
         if (precio) {
             filtro.precio = precio;
         }
@@ -57,10 +42,8 @@ router.get('/', async (req, res, next)=>{
 
         //filtro por tag -->
 
-        //filters.nombre = new RegExp('^' + req.query.nombre, "i");
-        
         const anuncios = await Anuncio.lista(filtro,skip, limit);
-        res.json({results: anuncios });
+        res.json({anuncios: anuncios });
     }catch(err){
         next(err);
     }
