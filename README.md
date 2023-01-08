@@ -109,7 +109,6 @@ GET /apiv1/anuncios?skip=1&limit=3
             },
             {"_id":"63ba5510d9264b0bb528fd26","nombre":"Pulsera","venta":false,"precio":35,"foto":"pulsera.png","tags":["lifestyle"],"__v":0},{"_id":"63ba5510d9264b0bb528fd27","nombre":"Mini","venta":true,"precio":29300,"foto":"mini.png","tags":["motor"],"__v":0}]}
 
----
 List with tags:
 ```sh
 GET /apiv1/anuncios?fields=tags
