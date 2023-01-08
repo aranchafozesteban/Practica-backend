@@ -1,5 +1,6 @@
 'use strict';
 
+const { signedCookie } = require('cookie-parser');
 const express = require('express');
 const router = express.Router();
 var createError = require('http-errors');
@@ -10,11 +11,16 @@ const Anuncio = require('../../models/anuncio');
 router.get('/', async (req, res, next)=>{
     try{
         const anuncios = await Anuncio.lista();
-        res.json({results: anuncios });
+        res.json({anuncios: anuncios });
     }catch(err){
         next(err);
     }
 });
+
+router.get('/parametro_opcional/:color?', (req, res, next) => {
+    const color = req.params.color;
+    res.send(`He recibido el parámetro ${color}`);
+  });
 
 
 // GET /apiv1/anuncios --> lista con anuncios con filtros

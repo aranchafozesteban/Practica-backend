@@ -4,7 +4,6 @@ const connection = require('./lib/connectMongoose');
 
 const Anuncio = require('./models/anuncio');
 
-const Lista = require('./anunciosLista');
 
 
 async function main(){
