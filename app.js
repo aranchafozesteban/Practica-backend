@@ -26,6 +26,7 @@ app.use('/apiv1/anuncios', authMiddleware, require('./routes/apiv1/anuncios'));
 
 // Rutas de mi web:
 app.use('/', require('./routes/index'));
+app.use('/', require('./routes/users'));
 
 
 // catch 404 and forward to error handler
