@@ -12,10 +12,10 @@ router.get('/', async (req, res, next)=>{
     try{
         //filtros
         const nombre = req.query.nombre;
-        const nombre2 = req.query.nombre;
         const venta = req.query.venta;
         const precio = req.query.precio;
         const foto = req.query.foto;
+        const tag =req.query.tag;
         const filtro = {};
 
         //paginación 
@@ -45,7 +45,10 @@ router.get('/', async (req, res, next)=>{
             filtro.foto = foto;
         }
 
-        //filtro por tag -->
+        //filtro por tag --> /apiv1/anuncios?tag=motor
+        if (tag){
+            filtro.tag = tag;
+        }
 
         const anuncios = await Anuncio.lista(filtro,skip, limit);
         res.json({anuncios: anuncios });

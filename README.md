@@ -17,6 +17,7 @@ Start the application in development with:
 npm run dev
 ```
 
+---
 ## API Documentation
 
 List of ads without filters:
@@ -25,15 +26,7 @@ List of ads without filters:
 GET /apiv1/anuncios
 ```
 
-{
-    "anuncios":[
-        {
-            "_id":"63ba4e85dc7e1f35142b3311","nombre":"Bicicleta",
-            "venta":true,
-            "precio":230.15,
-            "foto":"bici.jpg",
-            "tags":["lifestyle","motor"],
-            }
+{"anuncios":[{"_id":"63ba5510d9264b0bb528fd24","nombre":"Bicicleta","venta":true,"precio":230.15,"foto":"bici.jpg","tags":["lifestyle","motor"],"__v":0},{"_id":"63ba5510d9264b0bb528fd25","nombre":"iPhone 3GS","venta":false,"precio":50,"foto":"iphone.png","tags":["lifestyle","mobile"],"__v":0},{"_id":"63ba5510d9264b0bb528fd26","nombre":"Pulsera","venta":false,"precio":35,"foto":"pulsera.png","tags":["lifestyle"],"__v":0},{"_id":"63ba5510d9264b0bb528fd27","nombre":"Mini","venta":true,"precio":29300,"foto":"mini.png","tags":["motor"],"__v":0},{"_id":"63ba5510d9264b0bb528fd28","nombre":"Toyota","venta":false,"precio":25413,"foto":"toyota.png","tags":["motor"],"__v":0}]}
 
 ------------------------
 Lista de anuncios cuyo nombre empieza por:
@@ -110,7 +103,14 @@ GET /apiv1/anuncios?skip=1&limit=3
             },
             {"_id":"63ba5510d9264b0bb528fd26","nombre":"Pulsera","venta":false,"precio":35,"foto":"pulsera.png","tags":["lifestyle"],"__v":0},{"_id":"63ba5510d9264b0bb528fd27","nombre":"Mini","venta":true,"precio":29300,"foto":"mini.png","tags":["motor"],"__v":0}]}
 
+---
 Crear un anuncio:
 ```sh
 POST /apiv1/anuncios
+```
+
+---
+Visualizar foto de un anuncio:
+```sh
+GET /images/iphone.png
 ```

@@ -18,6 +18,7 @@ anuncioSchema.statics.lista = function(filtro, skip, limit, fields){
     return query.exec()
 }
 
+
 var Anuncio = mongoose.model('Anuncio', anuncioSchema);
 
 module.exports = Anuncio;
