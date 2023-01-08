@@ -41,12 +41,27 @@ async function initAnuncios(){
             "tags": [ "lifestyle", "mobile"]
             },
             {
-                "nombre": "Pulsera",
-                "venta": false,
-                "precio": 35.00,
-                "foto": "iphone.png",
-                "tags": ["lifestyle"]
-                }
+            "nombre": "Pulsera",
+            "venta": false,
+            "precio": 35.00,
+            "foto": "pulsera.png",
+            "tags": ["lifestyle"]
+            },
+            {
+            "nombre": "Mini",
+            "venta": true,
+            "precio": 29300.00,
+            "foto": "mini.png",
+            "tags": [ "motor"]
+            },
+            {
+            "nombre": "Toyota",
+            "venta": false,
+            "precio": 25413.00,
+            "foto": "toyota.png",
+            "tags": [ "motor"]
+            },
+                       
       ]);
     console.log(`Se han creado ${iniciales.length} anuncios.`);
 }

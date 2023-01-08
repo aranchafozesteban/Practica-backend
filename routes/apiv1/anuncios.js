@@ -66,4 +66,24 @@ router.get('/', async (req, res, next)=>{
     }
 });
 
+// Crear anuncio
+router.post('/', async (req, res, next) => {
+    try {
+  
+      const anuncioDatos = req.body;
+  
+      
+      const add = new Anuncio(anuncioDatos);
+  
+      
+      const anuncioGuardado = await add.save();
+  
+      res.json({ nuevoAnuncio: anuncioGuardado });
+  
+    } catch (err) {
+      next(err);
+    }
+  });
+
+
 module.exports = router
