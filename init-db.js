@@ -4,7 +4,7 @@ const connection = require('./lib/connectMongoose');
 
 const Anuncio = require('./models/anuncio');
 
-const Lista = require('./anunciosLista.json');
+const Lista = require('./anunciosLista');
 
 
 async function main(){
@@ -26,7 +26,29 @@ async function initAnuncios(){
     console.log(`Se han borrado ${borrado.deletedCount} anuncios.`);
 
     // anuncios de fichero js 
-    const iniciales = await Anuncio.insertMany(Lista);
+    const iniciales = await Anuncio.insertMany([
+        {
+            "nombre": "Bicicleta",
+            "venta": true,
+            "precio": 230.15,
+            "foto": "bici.jpg",
+            "tags": [ "lifestyle", "motor"]
+            },
+            {
+            "nombre": "iPhone 3GS",
+            "venta": false,
+            "precio": 50.00,
+            "foto": "iphone.png",
+            "tags": [ "lifestyle", "mobile"]
+            },
+            {
+                "nombre": "Pulsera",
+                "venta": false,
+                "precio": 35.00,
+                "foto": "iphone.png",
+                "tags": ["lifestyle"]
+                }
+      ]);
     console.log(`Se han creado ${iniciales.length} anuncios.`);
 }
 
